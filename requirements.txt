@@ -1,3 +1,3 @@
 django==3.1
 django_mysql==3.11
-django_filters
+django_filter

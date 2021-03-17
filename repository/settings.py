@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "repository",
         'OPTIONS': {
-            'read_default_file': 'db.cnf'
+            'read_default_file': 'db.conf'
         }
     }
 }

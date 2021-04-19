@@ -24,5 +24,6 @@ urlpatterns = [
     path('list/', papers_views.PapersList.as_view(), name='list'),
     path('results/', papers_views.Results.as_view(), name='results'),
     path('keywords/', papers_views.keywords, name='keywords'),
+    path('bibliography/', papers_views.bibliography, name='bibliography'),
     path('', papers_views.Home.as_view(), name='home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

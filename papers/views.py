@@ -1,4 +1,4 @@
-from django.conf.global_settings import STATIC_URL
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
@@ -76,4 +76,9 @@ def index(request):
 
 
 def keywords(request):
-    return redirect("{}/data/Keywords.xlsx".format(STATIC_URL))
+    return redirect("{}data/Keywords.xlsx".format(settings.STATIC_URL))
+
+
+def bibliography(request):
+    return redirect("{}data/Bib.pdf".format(settings.STATIC_URL))
+

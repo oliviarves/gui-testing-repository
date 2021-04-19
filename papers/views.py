@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import FormMixin
 
@@ -64,6 +64,10 @@ class Results(TemplateView):
             "TotalvsYEAR.svg",
         ]
         return context_data
+
+
+class Home(TemplateView):
+    template_name = "home.html"
 
 
 def index(request):

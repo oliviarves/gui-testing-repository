@@ -1,3 +1,4 @@
+from django.conf.global_settings import STATIC_URL
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
@@ -72,3 +73,7 @@ class Home(TemplateView):
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
+
+
+def keywords(request):
+    return redirect("{}/data/Keywords.xlsx".format(STATIC_URL))

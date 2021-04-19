@@ -25,7 +25,7 @@ SECRET_KEY = 'kdyjx(=fu5rb4nx!+lg!fd01s@b-p0j$p6+f)7bv*co0(kwev9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["gui-testing-repository.esx.testar.org",]
 
 
 # Application definition

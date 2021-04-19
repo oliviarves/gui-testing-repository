@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import FormMixin
 
 from papers.forms import PaperSearchForm
@@ -36,6 +36,34 @@ class PapersList(FormMixin, ListView):
             return filtered_model_list.qs
         else:
             return super(PapersList, self).get_queryset()
+
+
+class Results(TemplateView):
+    template_name = "results.html"
+
+    def get_context_data(self, **kwargs):
+        context_data = super(Results, self).get_context_data(**kwargs)
+        context_data['graphs'] = [
+            "_vs. COUNTRY_TERRITORY.svg",
+            "author_collaboration_evolution.svg",
+            "bradford_conf.svg",
+            "bradford_journ.svg",
+            "collaboration.png",
+            "conference vs article.svg",
+            "continent_evolution.svg",
+            "countries_over_time.svg",
+            "country_top.svg",
+            "country_top_bar.svg",
+            "funding.svg",
+            "kwords_evolution.svg",
+            "kwords_trend.svg",
+            "kwords_trend_reduced.svg",
+            "Spectroscopy.svg",
+            "spectroscopy zoom.svg",
+            "Spectroscopy 1960.svg",
+            "TotalvsYEAR.svg",
+        ]
+        return context_data
 
 
 def index(request):

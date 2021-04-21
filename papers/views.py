@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views import View
 from django.views.generic import ListView, TemplateView
 from django.views.generic.edit import FormMixin
+from django_filters.views import FilterView
 
 from papers.forms import PaperSearchForm
 from papers.models import Paper
@@ -62,7 +64,6 @@ class Results(TemplateView):
             "Spectroscopy.svg",
             "spectroscopy zoom.svg",
             "Spectroscopy 1960.svg",
-            "TotalvsYEAR.svg",
         ]
         return context_data
 

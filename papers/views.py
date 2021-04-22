@@ -1,3 +1,7 @@
+import itertools
+from os import listdir
+from os.path import isfile, join
+
 from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -9,6 +13,7 @@ from django_filters.views import FilterView
 from papers.forms import PaperSearchForm
 from papers.models import Paper
 from papers.filters import PaperFilterSet
+from repository.settings import BASE_DIR
 
 
 class PapersList(FormMixin, ListView):
@@ -44,27 +49,21 @@ class PapersList(FormMixin, ListView):
 class Results(TemplateView):
     template_name = "results.html"
 
+    # GRAPHS = list(itertools.chain.from_iterable([[f for f in listdir(p) if isfile(join(p, f))] for p in paths]))
+
+    def get_graph(self):
+        GRAPHS = []
+        paths = ['Documents', 'Authors', 'Sources']
+        for p in paths:
+            full_p = join(BASE_DIR, 'static/data/'+p)
+            files = [p + '/' + f for f in listdir(full_p) if isfile(join(full_p, f))]
+            GRAPHS.extend(files)
+        return GRAPHS
+
+
     def get_context_data(self, **kwargs):
         context_data = super(Results, self).get_context_data(**kwargs)
-        context_data['graphs'] = [
-            "_vs. COUNTRY_TERRITORY.svg",
-            "author_collaboration_evolution.svg",
-            "bradford_conf.svg",
-            "bradford_journ.svg",
-            "collaboration.png",
-            "conference vs article.svg",
-            "continent_evolution.svg",
-            "countries_over_time.svg",
-            "country_top.svg",
-            "country_top_bar.svg",
-            "funding.svg",
-            "kwords_evolution.svg",
-            "kwords_trend.svg",
-            "kwords_trend_reduced.svg",
-            "Spectroscopy.svg",
-            "spectroscopy zoom.svg",
-            "Spectroscopy 1960.svg",
-        ]
+        context_data['graphs'] = self.get_graph()
         return context_data
 
 

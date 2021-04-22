@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import CASCADE
 from django_mysql.models import EnumField
 
 
@@ -23,3 +24,20 @@ class Paper(models.Model):
     abstract = models.TextField()
     doi = models.CharField(max_length=100)
     # bibtex = models.JSONField()
+
+
+class Category(models.Model):
+    parent = models.ForeignKey('self', on_delete=CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return 'Category ' + self.name
+
+
+class Image(models.Model):
+    path = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=CASCADE)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return 'Image {} {}'.format(self.category.  name, self.path)

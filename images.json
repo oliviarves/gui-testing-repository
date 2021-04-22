@@ -1,0 +1,161 @@
+[
+  {
+    "model": "papers.category",
+    "pk": 1,
+    "fields": {
+      "parent": null,
+      "name": "Documents"
+    }
+  },
+  {
+    "model": "papers.category",
+    "pk": 2,
+    "fields": {
+      "parent": null,
+      "name": "Authors"
+    }
+  },
+  {
+    "model": "papers.category",
+    "pk": 3,
+    "fields": {
+      "parent": null,
+      "name": "Sources"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 1,
+    "fields": {
+      "path": "Documents/1TotalvsYEAR.svg",
+      "category": 1,
+      "description": "Evolution of the number of publications"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 18,
+    "fields": {
+      "path": "Documents/2Spectroscopy.svg",
+      "category": 1,
+      "description": "Reference Publication Year Spectroscopy"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 19,
+    "fields": {
+      "path": "Documents/3spectroscopy zoom.svg",
+      "category": 1,
+      "description": "Reference Publication Year Spectroscopy - Focus on median"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 20,
+    "fields": {
+      "path": "Documents/4kwords_evolution.svg",
+      "category": 1,
+      "description": "Cumulative frequency of keywords"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 21,
+    "fields": {
+      "path": "Documents/5kwords_trend_reduced.svg",
+      "category": 1,
+      "description": "Keywords trends"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 22,
+    "fields": {
+      "path": "Authors/1authors.svg",
+      "category": 2,
+      "description": "Ranking  of  author  by  number  of  publications"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 23,
+    "fields": {
+      "path": "Authors/2collaboration.png",
+      "category": 2,
+      "description": "Collaboration network of most contributing authors"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 24,
+    "fields": {
+      "path": "Authors/3author_collaboration_evolution.svg",
+      "category": 2,
+      "description": "Authorship evolution"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 25,
+    "fields": {
+      "path": "Authors/4country_top_bar.svg",
+      "category": 2,
+      "description": "Most contributing countries"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 26,
+    "fields": {
+      "path": "Authors/5continent_evolution.svg",
+      "category": 2,
+      "description": "Evolution of contribution per continent"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 27,
+    "fields": {
+      "path": "Authors/6funding.svg",
+      "category": 2,
+      "description": "Funding per region"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 28,
+    "fields": {
+      "path": "Sources/1conference vs article.svg",
+      "category": 3,
+      "description": "Number of papers published in (journals + books) vs (conferences + workshops)"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 29,
+    "fields": {
+      "path": "Sources/2conferences.svg",
+      "category": 3,
+      "description": "Top 10 of most influential Conferences"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 30,
+    "fields": {
+      "path": "Sources/3journals.svg",
+      "category": 3,
+      "description": "Top 11 of most influential Conferences"
+    }
+  },
+  {
+    "model": "papers.image",
+    "pk": 31,
+    "fields": {
+      "path": "Sources/4bradford_journ.svg",
+      "category": 3,
+      "description": "Comparison of Leimkuhler model with the real distribution on journals"
+    }
+  }
+]

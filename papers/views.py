@@ -11,8 +11,8 @@ from django.views.generic.edit import FormMixin
 from django_filters.views import FilterView
 
 from papers.forms import PaperSearchForm
-from papers.models import Paper
-from papers.filters import PaperFilterSet
+from papers.models import Paper, Image
+from papers.filters import PaperFilterSet, ResultsFilterSet
 from repository.settings import BASE_DIR
 
 
@@ -46,25 +46,16 @@ class PapersList(FormMixin, ListView):
             return super(PapersList, self).get_queryset()
 
 
-class Results(TemplateView):
+class Results(FilterView):
     template_name = "results.html"
+    model = Image
+    filterset_class = ResultsFilterSet
 
     # GRAPHS = list(itertools.chain.from_iterable([[f for f in listdir(p) if isfile(join(p, f))] for p in paths]))
 
-    def get_graph(self):
-        GRAPHS = []
-        paths = ['Documents', 'Authors', 'Sources']
-        for p in paths:
-            full_p = join(BASE_DIR, 'static/data/'+p)
-            files = [p + '/' + f for f in listdir(full_p) if isfile(join(full_p, f))]
-            GRAPHS.extend(files)
-        return GRAPHS
-
-
-    def get_context_data(self, **kwargs):
-        context_data = super(Results, self).get_context_data(**kwargs)
-        context_data['graphs'] = self.get_graph()
-        return context_data
+    # def get_context_data(self, **kwargs):
+    #     context_data = super(Results, self).get_context_data(**kwargs)
+    #     return context_data
 
 
 class Home(TemplateView):

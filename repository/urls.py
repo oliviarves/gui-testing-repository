@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from papers import views as papers_views
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('list/', papers_views.PapersList.as_view(), name='list'),
-    path('results/', papers_views.Results.as_view(), name='results'),
+    re_path('results/$', papers_views.Results.as_view(), {'category': None}, name='results'),
+    re_path('results/(?P<category>\w{0,50})/$', papers_views.Results.as_view(), name='results'),
     path('keywords/', papers_views.keywords, name='keywords'),
     path('bibliography/', papers_views.bibliography, name='bibliography'),
     path('', papers_views.Home.as_view(), name='home'),

@@ -7,4 +7,4 @@ def get_item(dictionary, key):
 
 @register.filter
 def remove_extension(value):
-    return value.split('.')[0].replace('/', '_')
+    return value.split('.')[0].replace('/', '_').replace(' ', '')

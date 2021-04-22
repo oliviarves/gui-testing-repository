@@ -1,6 +1,9 @@
 import csv
-from papers.models import Paper
+from os import listdir
+from os.path import join, isfile
 
+from papers.models import Paper, Image, Category
+from repository.settings import BASE_DIR
 
 MAPPING = {
     'author': '\ufeffAuthors',
@@ -48,3 +51,12 @@ def populate():
             print(', '.join(row))
 
 # populate()
+
+
+def populate_images():
+    paths = ['Documents', 'Authors', 'Sources']
+    for p in paths:
+        full_p = join(BASE_DIR, 'static/data/' + p)
+        files = [p + '/' + f for f in listdir(full_p) if isfile(join(full_p, f))]
+        for f in files:
+            Image(path=f, category=Category.objects.get(name=p)).save()

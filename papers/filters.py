@@ -22,4 +22,6 @@ class ResultsFilterSet(filters.FilterSet):
 
     class Meta:
         model = Image
-        fields = ('category',)
+        exclude = '__all__'
+
+    category = filters.CharFilter(field_name='category__name', lookup_expr='iexact')

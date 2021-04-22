@@ -3,7 +3,7 @@ from django.template.defaulttags import register
 
 @register.filter
 def get_item(dictionary, key):
-    return dictionary.get(key)
+    return dictionary.get(key, None)
 
 @register.filter
 def remove_extension(value):

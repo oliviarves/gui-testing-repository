@@ -48,7 +48,6 @@ class PapersList(FormMixin, ListView):
 
 class Results(FilterView):
     template_name = "results.html"
-    model = Image
     filterset_class = ResultsFilterSet
 
     # GRAPHS = list(itertools.chain.from_iterable([[f for f in listdir(p) if isfile(join(p, f))] for p in paths]))

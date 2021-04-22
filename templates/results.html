@@ -2,15 +2,38 @@
 
 {% block content %}
 {% load static %}
-{#<p>#}
-{##}
-{#    <ul class="nav nav-tabs">#}
-{#          <li class="nav-item">#}
-{#            <a class="nav-link" href="{% url 'results' 'all' %}">All</a>#}
-{#          </li>#}
-{#          <li class="nav-item">#}
-{#            <a class="nav-link" href="{% url 'results' category='growth' %}">Growth</a>#}
-{#          </li>#}
+<p>
+    <form action={% url 'results' %}>
+    <ul class="nav nav-tabs">
+          <li class="nav-item">
+{#            <a class="nav-link" href="{% url 'results' 'all' %}"#}
+{#                type="submit">All</a>#}
+              <button type="submit" class="btn btn-link nav-link {% if request.GET|get_item:'category' == None %}active{% endif %}">All</button>
+          </li>
+          <li class="nav-item">
+{#            <a class="nav-link" href="{% url 'results' category='Documents' %}"#}
+{#                name="category"#}
+{#                value="Documents"#}
+{#                type="submit">Documents</a>#}
+
+              <button type="submit" value="Documents" name="category" class="btn btn-link nav-link {% if request.GET|get_item:'category' == "Documents" %}active{% endif %}">Documents</button>
+          </li>
+
+          <li class="nav-item">
+{#            <a class="nav-link" href="{% url 'results' category='Authors' %}"#}
+{#                name="category"#}
+{#                value="Authors"#}
+{#                type="submit">Authors</a>#}
+              <button type="submit" value="Authors" name="category" class="btn btn-link nav-link {% if request.GET|get_item:'category' == "Authors" %}active{% endif %}">Authors</button>
+          </li>
+
+          <li class="nav-item">
+{#            <a class="nav-link" href="{% url 'results' category='Sources' %}"#}
+{#                name="category"#}
+{#                value="Sources"#}
+{#                type="submit">Sources</a>#}
+              <button type="submit" value="Sources" name="category" class="btn btn-link nav-link {% if request.GET|get_item:'category' == "Sources" %}active{% endif %}">Sources</button>
+          </li>
 {#          <li class="nav-item dropdown">#}
 {#            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Publications and Rankings</a>#}
 {#            <div class="dropdown-menu">#}
@@ -37,8 +60,9 @@
 {#              <a class="dropdown-item" href="{% static "data/Keywords.xlsx" %}">Group of keywords</a>#}
 {#            </div>#}
 {#          </li>#}
-{#        </ul>#}
-{#</p>#}
+        </ul>
+    </form>
+</p>
         <div class="row">
             {% for chart in object_list %}
                 <div class="col-md-4">
@@ -50,7 +74,7 @@
                           <p class="card-text">{{ chart.description }}</p>
                           <div class="d-flex justify-content-between align-items-center">
 {#                            <div class="btn-group">#}
-{#                              <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#{{    chart }}">View</button>#}
+{#                              <button type="button" class="btn btn-sm btn btn-link-secondary" data-toggle="modal" data-target="#{{    chart }}">View</button>#}
 {#                            </div>#}
                           </div>
                         </div>

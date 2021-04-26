@@ -6,6 +6,10 @@ def get_item(dictionary, key, temp=None):
     return dictionary.get(key, temp)
 
 @register.filter
+def get_item_filter(dictionary, key, temp=None):
+    return dictionary.get(key, temp)
+
+@register.filter
 def remove_extension(value):
     return value.split('.')[0].replace('/', '_').replace(' ', '')
 

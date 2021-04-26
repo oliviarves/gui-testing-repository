@@ -15,7 +15,7 @@ class PaperFilterSet(filters.FilterSet):
         }
 
     document_type = filters.MultipleChoiceFilter(widget=SelectMultiple, field_name="document_type",
-                                                 choices=Paper.DOCUMENT_TYPE_OPTIONS)
+                                                 choices=Paper.DOCUMENT_TYPE_OPTIONS, lookup_expr='contains')
 
 
 class ResultsFilterSet(filters.FilterSet):

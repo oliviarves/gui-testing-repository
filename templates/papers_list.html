@@ -11,7 +11,7 @@ Documents
 <div style="margin-bottom: 10px">
     {% csrf_token %}
     <div class="input-group mb-3">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search in title" aria-label="Search" name="title__contains">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search in title" aria-label="Search" name="title__contains" value={%  get_item filter.form.initial "title__contains" "" %} >
     <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="collapse" data-target="#advance-search" aria-expanded="false" aria-controls="collapseExample">
         Advanced Search
     </button>
@@ -22,15 +22,15 @@ Documents
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Year</span>
             </div>
-            <input type="number" class="form-control col-sm-2" id="year__lte" aria-describedby="yearMin" placeholder="min" name="year__gte" style="width: 7em" min="1901" max="2021">
-            <input type="number" class="form-control col col-sm-2" id="year__gte" aria-describedby="yearMax" placeholder="max" name="year__lte" style="width: 7em" min="1901" max="2021">
+            <input type="number" class="form-control col-sm-2" id="year__lte" aria-describedby="yearMin" placeholder="min" name="year__gte" style="width: 7em" min="1901" max="2021" value={%  get_item filter.form.initial "year__gte" "" %} >
+            <input type="number" class="form-control col col-sm-2" id="year__gte" aria-describedby="yearMax" placeholder="max" name="year__lte" style="width: 7em" min="1901" max="2021" value={%  get_item filter.form.initial "year__lte" "" %} >
         </div>
 
         <div class="input-group mb-3 ">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon2">Abstract</span>
             </div>
-            <textarea type="search" class="form-control" placeholder="Search in abstract" aria-label="Search" name="abstract__contains"></textarea>
+            <textarea type="search" class="form-control" placeholder="Search in abstract" aria-label="Search" name="abstract__contains" value={%  get_item filter.form.initial "abstract__contains" "" %} ></textarea>
         </div>
 
          <div class="input-group mb-3 ">
@@ -38,7 +38,7 @@ Documents
                 <span class="input-group-text" id="basic-addon2">Document Type</span>
             </div>
              <div >
-                {{ form.document_type }}
+                {{ filter.form.document_type }}
              </div>
 {#            <textarea type="search" class="form-control" placeholder="Search in abstract" aria-label="Search" name="abstract__contains"></textarea>#}
         </div>
@@ -81,7 +81,7 @@ Documents
               </td>
               <td>{{ paper.year }}</td>
               <td>{{ paper.source_title }}</td>
-              <td>{{ document_type|get_item:paper.document_type }}</td>
+              <td>{% get_item document_type paper.document_type %}</td>
             </tr>
             <tr class="collapse table-secondary" id="abstract{{ paper.id }}">
                 <td colspan="4">
@@ -103,12 +103,11 @@ Documents
       </tbody>
     </table>
 </div>
-</div>
 
 
 <ul class="pagination justify-content-center">
     <li class="page-item">
-{#          <a class="page-link" href="?page=1" aria-label="First" onclick="document.getElementById('searchform').submit()">#}
+{#          <a class="page-link" href="?{% param_replace page=1 %}" aria-label="First" onclick="document.getElementById('searchform').submit()">#}
 {#            &laquo;#}
 {#          </a>#}
           <button class="page-link"
@@ -136,15 +135,15 @@ Documents
     {% for num in range %}
       {% if num == page_obj.number %}
         <li class="page-item active">
-{#            <a class="page-link" href="?page={{ page_obj.number }}">#}
-{#            {{  page_obj.number  }}#}
-{#            </a>#}
-          <button class="page-link active"
-                name="page"
-                value={{ num }}
-                type="submit">
-            {{ num }}
-          </button>
+            <a class="page-link" href="?page={{ page_obj.number }}">
+            {{  page_obj.number  }}
+            </a>
+{#          <button class="page-link active"#}
+{#                name="page"#}
+{#                value={{ num }}#}
+{#                type="submit">#}
+{#            {{ num }}#}
+{#          </button>#}
         </li>
       {% else %}
           <li class="page-item">
